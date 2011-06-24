@@ -1,23 +1,23 @@
 /*
 ---
- 
+
 name: Mif.Tree.Drag
 description: implements drag and drop
 license: MIT-Style License (http://mifjs.net/license.txt)
 copyright: Anton Samoylov (http://mifjs.net)
 authors: Anton Samoylov (http://mifjs.net)
-requires: [Mif.Tree, Mif.Tree.Transform, more:/Drag.Move]
+requires: [Mif.Tree, Mif.Tree.Transform, more/Drag.Move]
 provides: Mif.Tree.Drag
- 
+
 ...
 */
 
 Mif.Tree.Drag = new Class({
-	
+
 	Implements: [new Events, new Options],
-	
+
 	Extends: Drag,
-	
+
 	options:{
 		group: 'tree',
 		droppables: [],
@@ -41,11 +41,11 @@ Mif.Tree.Drag = new Class({
 			droppables: [],
 			action: this.options.action
 		});
-		
+
 		this.addToGroups(this.options.group);
-		
+
 		this.setDroppables(this.options.droppables);
-		
+
 		$extend(tree.defaults, {
 			dropDenied: [],
 			dragDisabled: false
@@ -53,18 +53,18 @@ Mif.Tree.Drag = new Class({
 		tree.addEvent('drawRoot',function(){
 			tree.root.dropDenied.combine(['before', 'after']);
 		});
-		
+
 		this.pointer = new Element('div').addClass('mif-tree-pointer').injectInside(tree.wrapper);
-		
+
 		this.current = Mif.Tree.Drag.current;
 		this.target = Mif.Tree.Drag.target;
 		this.where = Mif.Tree.Drag.where;
 
 		this.element = [this.current, this.target, this.where];
 		this.document = tree.wrapper.getDocument();
-		
+
 		this.selection = (Browser.Engine.trident) ? 'selectstart' : 'mousedown';
-		
+
 		this.bound = {
 			start: this.start.bind(this),
 			check: this.check.bind(this),
@@ -77,7 +77,7 @@ Mif.Tree.Drag = new Class({
 			keydown: this.keydown.bind(this)
 		};
 		this.attach();
-		
+
 		this.addEvent('start', function(){
 			Mif.Tree.Drag.dropZone=this;
 			this.tree.unselect();
@@ -105,11 +105,11 @@ Mif.Tree.Drag = new Class({
 			dropZone.beforeDrop();
 		});
 	},
-	
+
 	getElement: function(){
 		return this.tree.wrapper;
 	},
-	
+
 	addToGroups: function(groups){
 		groups = $splat(groups);
 		this.groups.combine(groups);
@@ -117,7 +117,7 @@ Mif.Tree.Drag = new Class({
 			Mif.Tree.Drag.groups[group]=(Mif.Tree.Drag.groups[group]||[]).include(this);
 		}, this);
 	},
-	
+
 	setDroppables: function(droppables){
 		this.droppables.combine($splat(droppables));
 		this.groups.each(function(group){
@@ -134,7 +134,7 @@ Mif.Tree.Drag = new Class({
 		this.tree.wrapper.removeEvent('mousedown', this.bound.start);
 		return this;
 	},
-	
+
 	dragTargetSelect: function(){
 		function addDragTarget(){
 			this.current.getDOM('name').addClass('mif-tree-drag-current');
@@ -145,7 +145,7 @@ Mif.Tree.Drag = new Class({
 		this.addEvent('start',addDragTarget.bind(this));
 		this.addEvent('beforeComplete',removeDragTarget.bind(this));
 	},
-	
+
 	leave: function(event){
 		var dropZone = Mif.Tree.Drag.dropZone;
 		if(dropZone){
@@ -154,11 +154,11 @@ Mif.Tree.Drag = new Class({
 			if(dropZone.onleave) dropZone.onleave();
 			Mif.Tree.Drag.dropZone = false;
 		}
-		
+
 		var relatedZone = this.getZone(event.relatedTarget);
 		if(relatedZone) this.enter(null, relatedZone);
 	},
-	
+
 	onleave: function(){
 		this.tree.unselect();
 		this.clean();
@@ -166,7 +166,7 @@ Mif.Tree.Drag = new Class({
 		this.scrolling = null;
 		this.target = false;
 	},
-	
+
 	enter: function(event, zone){
 		if(event) zone = this.getZone(event.target);
 		var dropZone = Mif.Tree.Drag.dropZone;
@@ -175,11 +175,11 @@ Mif.Tree.Drag = new Class({
 		zone.current = Mif.Tree.Drag.current;
 		if(zone.onenter) zone.onenter();
 	},
-	
+
 	onenter: function(){
 		this.onleave();
 	},
-	
+
 	getZone: function(target){//private leave/enter
 		if(!target) return false;
 		var parent = $(target);
@@ -194,7 +194,7 @@ Mif.Tree.Drag = new Class({
 		}while(parent);
 		return false;
 	},
-	
+
 	keydown: function(event){
 		if(event.key == 'esc') {
 			var zone = Mif.Tree.Drag.dropZone;
@@ -202,7 +202,7 @@ Mif.Tree.Drag = new Class({
 			this.stop(event);
 		}
 	},
-	
+
 	autoScroll: function(){
 		var y = this.y;
 		if(y == -1) return;
@@ -232,7 +232,7 @@ Mif.Tree.Drag = new Class({
 			this.scrolling = null;
 		}
 	},
-	
+
 	start: function(event){//mousedown
 		if(event.rightClick) return;
 		if (this.options.preventDefault) event.preventDefault();
@@ -246,12 +246,12 @@ Mif.Tree.Drag = new Class({
 		}
 		Mif.Tree.Drag.current = this.current;
 		Mif.Tree.Drag.startZone = this;
-		
+
 		this.mouse = {start: event.page};
 		this.document.addEvents({mousemove: this.bound.check, mouseup: this.bound.cancel});
 		this.document.addEvent(this.selection, this.bound.eventStop);
 	},
-	
+
 	drag: function(event){
 		Mif.Tree.Drag.ghost.position({x:event.page.x+20,y:event.page.y+20});
 		var dropZone = Mif.Tree.Drag.dropZone;
@@ -304,7 +304,7 @@ Mif.Tree.Drag = new Class({
 			this.wrapper = false;
 		}
 	},
-	
+
 	addGhost: function(){
 		var wrapper = this.current.getDOM('wrapper');
 		var ghost = new Element('span').addClass('mif-tree-ghost');
@@ -314,7 +314,7 @@ Mif.Tree.Drag = new Class({
 		ghost.getLast().getFirst().className = '';
 		Mif.Tree.Drag.ghost = ghost;
 	},
-	
+
 	checkTarget: function(){
 		this.y = this.tree.mouse.coords.y;
 		var target = this.tree.mouse.node;
@@ -374,12 +374,12 @@ Mif.Tree.Drag = new Class({
 			}
 		};
 		if(this.where == where && this.target == target) return false;
-		this.where = where; 
+		this.where = where;
 		this.target = target;
 		this.fireEvent('drag');
 		return true;
 	},
-	
+
 	emptydrop: function(){
 		var current = this.current, target = this.target, where = this.where;
 		var scroll = this.tree.scroll;
@@ -406,7 +406,7 @@ Mif.Tree.Drag = new Class({
 		this.tree.select(this.current);
 		this.tree.scrollTo(this.current);
 	},
-	
+
 	beforeDrop: function(){
 		if(this.options.beforeDrop){
 			this.options.beforeDrop.apply(this, [this.current, this.target, this.where]);
@@ -414,7 +414,7 @@ Mif.Tree.Drag = new Class({
 			this.drop();
 		}
 	},
-	
+
 	drop: function(){
 		var current = this.current, target = this.target, where = this.where;
 		Mif.Tree.Drag.ghost.dispose();
@@ -439,7 +439,7 @@ Mif.Tree.Drag = new Class({
 		this.tree.select(current).scrollTo(current);
 		this.fireEvent('drop', [current, target, where]);
 	},
-	
+
 	onstop: function(){
 		this.clean();
 		$clear(this.scrolling);

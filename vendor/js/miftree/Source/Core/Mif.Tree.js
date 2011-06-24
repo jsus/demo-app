@@ -7,7 +7,7 @@ license: MIT-Style License (http://mifjs.net/license.txt)
 copyright: Anton Samoylov (http://mifjs.net)
 authors: Anton Samoylov (http://mifjs.net)
 requires:
-  - Core/1.2.4: *
+  - Core/1.2.4: '*'
   - More/Fx.Scroll
 provides: Mif.Tree
 
