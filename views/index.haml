@@ -1,0 +1,31 @@
+!!! 5
+%html
+  %head
+    %title Jsus Demo Page
+    %link{:rel => "stylesheet", :href => "/style.css"}
+    %script{:type => "text/javascript", :src => "/mootools-core.js"}
+    %script{:type => "text/javascript", :src => "/application.js"}
+  %body
+    #wrapper
+      %h1 Jsus demo packager
+      %h2 Select packages or classes you need and then press the button
+      #result
+        %label
+          Resulting url:
+          %input{:type => :text, :readonly => true}
+          %input#go{:type => :button, :value => "Go"}
+          %input#reset{:type => :button, :value => "Reset"}
+      %ul#packages
+        - Jsus::Middleware.pool.packages.each do |package|
+          %li>
+            %label
+              %input{:type => "checkbox", :name => package.name}
+              #{package.name}
+            %ol.sources
+              - package.source_files.each do |source|
+                - source.provides.each do |tag|
+                  %li
+                    %label{:title => tag}
+                      %input{:type => "checkbox", :name => tag}
+                      #{tag}
+
