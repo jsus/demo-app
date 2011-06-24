@@ -1,0 +1,9 @@
+name: Mooml
+author: enekoalonso
+category: Native
+tags: [template, html, dom, element, engine, templating]
+current: 1.3.0
+demo: http://enekoalonso.com/projects/mooml/
+sources:
+  - Source/mooml.js
+  - Source/mooml-globalize.js

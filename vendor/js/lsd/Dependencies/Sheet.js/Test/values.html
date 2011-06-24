@@ -1,0 +1,38 @@
+<!DOCTYPE html><html><head>
+	
+	<meta http-equiv=Content-type content="text/html;">
+	
+	<link rel=stylesheet href="lib/qunit/qunit/qunit.css">
+	<script>exports = {}</script>
+	<script src="lib/qunit/qunit/qunit.js"></script>
+	<script src="lib/sg-assert-helpers.js"></script>
+	<script src="lib/sg-qunit-testrunner.js"></script>
+	
+	<title>Sheet.js Unit Tests</title>
+	
+</head><body>
+	
+	<h1 id=qunit-header>Sheet.js / Values</h1>
+	
+	<h2 id=qunit-banner></h2>
+	<div id=qunit-testrunner-toolbar></div>
+	<h2 id=qunit-userAgent></h2>
+	<ol id=qunit-tests></ol>
+	
+	
+	<!-- Verify API Implementation -->
+	
+	<!-- Use the DOM in the current browser -->
+	<script>exports = {}</script>
+	<script src="../Source/sg-regex-tools.js"></script>
+	<script src="../Source/SheetParser.CSS.js"></script>
+	<script src="../Source/SheetParser.Value.js"></script>
+	<script src="../Source/SheetParser.Property.js"></script>
+	<script src="../Source/Sheet.js"></script>
+	
+	<script>var Sheet = exports.Sheet; var SheetParser = exports.SheetParser;</script>
+	<script src="SheetParser.Value.test.js"></script>
+	
+	<script> QUnit.TestRunner.run(exports) </script>
+	
+</body></html>

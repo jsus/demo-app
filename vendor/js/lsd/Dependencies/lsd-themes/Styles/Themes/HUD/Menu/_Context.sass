@@ -1,0 +1,22 @@
+menu[type=context]
+  +box-outline
+  +box-transparent
+  :z-index 250
+  :padding-top 5px
+  :padding-bottom 5px
+  :corner-radius-top-left 3px
+  :corner-radius-top-right 3px
+  :corner-radius-bottom-left 3px
+  :corner-radius-bottom-right 3px
+  :position absolute
+  option
+    > .container:element
+      :color #eaeaea
+      :font-size 11px
+      :padding 0 5px
+      :line-height 16px
+      
+    &:chosen, &:selected
+      > .container:element
+        :color #fff
+        :background #ccc

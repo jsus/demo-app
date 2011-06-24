@@ -1,0 +1,24 @@
+{
+  "mooml": {
+    "desc": "Mooml is a javasctript templating engine for HTML generation, powered by Mootools.",
+    "requires": [
+      "Core/Class",
+      "Core/Elements",
+      "Core/Array"
+    ],
+    "provides": [
+      "Mooml",
+      "Mooml.Template",
+      "Mooml.Templates"
+    ]
+  },
+  "mooml-globalize": {
+    "desc": "Mooml Globalize makes all template functions available in the global scope of the window object.",
+    "requires": [
+      "Mooml"
+    ],
+    "provides": [
+      "Window.div"
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+name: "Mobile"
+
+exports: "mobile.js"
+
+web: "[cpojer.net](http://cpojer.net)"
+
+description: "Makes your web applications more touching."
+
+license: "[MIT License](http://mootools.net/license.txt)"
+
+copyright: "&copy; [Christoph Pojer](http://cpojer.net/)"
+
+author: "cpojer"
+authors: "[Christoph Pojer](http://cpojer.net)"
+
+sources:
+  - "Source/Browser/Mobile.js"
+  - "Source/Browser/Features.Touch.js"
+  - "Source/Desktop/Mouse.js"
+  - "Source/Touch/Touch.js"
+  - "Source/Touch/Click.js"
+  - "Source/Touch/Pinch.js"
+  - "Source/Touch/Swipe.js"
+  - "Source/Touch/Touchhold.js"

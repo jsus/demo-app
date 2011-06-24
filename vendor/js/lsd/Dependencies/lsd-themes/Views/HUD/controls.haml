@@ -1,0 +1,66 @@
+!!!
+%head
+  %title HUD Theme controls
+  :javascript
+    window.prefix = '../../../lsd-examples/Demos/';
+  %script{:src => "../../../lsd-examples/Scripts/includes.js"}
+  %link{:rel => "stylesheet lsd", :href => "../Assets/Styles/Themes/HUD/screen.css"}
+  %link{:rel => "stylesheet", :href => "../Assets/Styles/controls.css"}
+  :javascript
+    window.addEvent('domready', function() {
+      LSD.Sheet.decompile('lsd', function() {
+        new LSD.Document;
+        $$('button', 'select', 'input', 'menu').each(LSD.Layout.replace)
+      })
+    })
+  
+%body
+  %ul.controls
+    %li>
+      %button Cancel
+      %span.label Button
+    
+    %li>
+      %button.default OK
+      %span.label Default button
+    
+    %li>
+      %select
+        %option{:inherit => "partial"} Pop up
+        %option{:inherit => "partial"} Item
+      %span.label Selectbox
+    
+    %li>
+      %select{:"menu-position" => 'bottom'}
+        %option{:inherit => "partial"} Pop up
+        %option{:inherit => "partial"} Item
+      %span.label Dropdown selectbox  
+    
+    %li>
+      %input
+      %span.label Standart text field
+    
+    %li>
+      %input.round
+      %span.label Rounded text field
+   
+    %li>
+      %input#hello{:type => "checkbox"}
+      %label{:for => "hello"} Hello friend!
+      %span.label Checkbox
+    
+    %li>
+      %input#another{:type => "radio"}
+      %label{:for => "another"} Another option
+      %span.label Radio button
+    
+    %li>
+      %menu.segmented{:type => :toolbar}
+        %button.first Foo
+        %button Bar
+        %button.last 1
+      %span.label Segmented buttons
+      
+    %li>
+      %input{:type => :range}
+      %span.label Range input

@@ -1,0 +1,36 @@
+{
+  "Mooml": {
+    "desc": "",
+    "provides": [
+      "Mooml",
+      "Mooml.Template",
+      "Mooml.Templates",
+      "Window.div",
+      "Core/Slick.Parser",
+      "Core/Slick.Finder",
+      "Core/Core",
+      "Core/MooTools",
+      "Core/Type",
+      "Core/typeOf",
+      "Core/instanceOf",
+      "Core/Native",
+      "Core/Array",
+      "Core/String",
+      "Core/Function",
+      "Core/Number",
+      "Core/Class",
+      "Core/Browser",
+      "Core/Window",
+      "Core/Document",
+      "Core/Element",
+      "Core/Elements",
+      "Core/$",
+      "Core/$$",
+      "Core/Iframe",
+      "Core/Selectors"
+    ],
+    "requires": [
+
+    ]
+  }
+}

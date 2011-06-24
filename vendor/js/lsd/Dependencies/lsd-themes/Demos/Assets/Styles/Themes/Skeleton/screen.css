@@ -1,0 +1,56 @@
+.lsd.form.two-column .lsd.label, .lsd.form.two-column .lsd.input {
+float: left; }
+
+.lsd.scrollbar {
+height: 16px;
+width: 16px; }
+.lsd.scrollbar.is-horizontal .lsd.track {
+  height: 14px;
+  margin-left: 16px; }
+.lsd.scrollbar.is-vertical .lsd.track {
+  width: 14px;
+  margin-top: 16px; }
+.lsd.scrollbar .lsd.track .lsd.thumb {
+  width: 12px;
+  height: 12px; }
+
+.lsd.section {
+width: inherit; }
+
+.lsd.section:after {
+content: ".";
+display: block;
+height: 0px;
+clear: both;
+visibility: hidden;
+_display: block;
+zoom: 1; }
+
+.lsd.select {
+height: 18px;
+width: auto; }
+.lsd.select .lsd.button {
+  width: 18px;
+  height: 18px; }
+
+.lsd.input, .lsd.textarea {
+height: 18px;
+width: 170px; }
+
+svg {
+display: block; }
+
+v\:* {
+background: transparent; }
+
+.lsd.* {
+-lsd-shadow-blur: 0; }
+
+.lsd:after {
+content: ".";
+display: block;
+height: 0px;
+clear: both;
+visibility: hidden;
+_display: block;
+zoom: 1; }

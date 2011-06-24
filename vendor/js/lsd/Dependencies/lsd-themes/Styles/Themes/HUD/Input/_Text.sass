@@ -1,0 +1,26 @@
+input[type=text], textarea
+  +inline-block
+
+input[type=text], textarea
+  :height 16px
+  :width auto
+  
+input[type=text]
+  +box-outline
+  +box-transparent
+  :width 70px
+
+input input:element, textarea textarea:element
+  :border 0
+  :line-height 12px
+  :font-size 11px
+  :padding-top 3px
+  :padding-left 4px
+  :font-family Helvetica
+  :background none
+  :display block
+  :outline none
+  :color #fff
+  
+input.round
+  :corner-radius 5px
