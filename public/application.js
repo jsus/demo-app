@@ -19,7 +19,7 @@ window.addEvent('domready', function() {
 	var resultButton = document.getElement('#result input#go');
 	resultButton.addEvent('click', function(e) {
 		e.stop();
-		var prefix = '/javascripts/jsus/require/';
+		var prefix = 'javascripts/jsus/require/';
 		window.location = prefix + resultField.get('value');
 	});
 
